@@ -8,11 +8,11 @@
     "start": "node ./src/app.js",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install api/.husky"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "cd api && npx lint-staged"
     }
   },
   "lint-staged": {
