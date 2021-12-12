@@ -12,5 +12,5 @@ app.listen(process.env.PORT, () => {
         console.log(`API started at http://${process.env.HOST}:${process.env.PORT}`);
 });
 
-var m = 0;
+
 

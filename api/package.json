@@ -8,21 +8,20 @@
     "start": "node ./src/app.js",
     "lint": "eslint ./src ",
     "lint:fix": "eslint ./src --fix",
-    "prepare": "cd .. && husky install api/.husky"
+    "prepare": "cd .. && husky install api/.husky",
+    "dev": "node -r dotenv/config ./src/app.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "cd api && npx lint-staged"
-    }
-  },
+  
   "lint-staged": {
     "*.(js)": [
-      "npm run lint:fix",
-      "git add"
+      "npm run lint:fix", "git add"
     ]
   },
   "author": "mari",
   "license": "ISC",
+  "plugins": [
+    "prettier"
+],
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1"
