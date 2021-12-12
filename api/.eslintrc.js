@@ -6,7 +6,7 @@ module.exports = {
     },
 
     "extends": ["eslint:recommended",
-    "airbnb",
+    "airbnb/base",
     "prettier"],
 
     "parserOptions": {
@@ -15,8 +15,10 @@ module.exports = {
     },
 
     "rules": {
-    },
-    "plugins": [
-        "prettier"
-      ]
-};
+        "no-var": 1,
+        "semi": "warn",
+        "no-plusplus": "off"
+            }
+    };
+
+  
