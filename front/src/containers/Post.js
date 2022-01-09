@@ -1,9 +1,9 @@
-import Post from '../../components/post';
+import Post from '../components/body/Post';
 
 function PostContainer(props){
    
     return (
-        <Post post='a new post'/>
+        <Post message='just one post'/>
     );
 }
 
