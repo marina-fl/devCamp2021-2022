@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-test-renderer": "^18.0.0-rc.0-next-fe905f152-20220107"
+  }
+}

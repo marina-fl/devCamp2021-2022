@@ -1,19 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import PostContainer from '././containers/post';
+import React, { useState } from 'react';
+import Header from './containers/Header';
+import { BodyContent }  from './containers/Body';
+
 
 function App() {
+  const [Content, setContent] = useState('articles');
+
   return (
     <div className="App">
-      <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Be In Touch - a new social network
-        </p>
-        </header>
-        <PostContainer/>
+      <Header setContent={setContent} />
+      <BodyContent Content={Content} />
     </div>
   );
-}
+} 
 
 export default App;
+
+
