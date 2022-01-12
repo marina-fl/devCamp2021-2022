@@ -1,9 +1,14 @@
 import Header from '../components/header/Header';
 
-function HeaderContainer({setContent}){
-   
+
+function HeaderContainer(){
+
     return (
-        <Header setContent={setContent}/>
+        <div>
+       
+        <Header/>
+        
+        </div>
     );
 }
 

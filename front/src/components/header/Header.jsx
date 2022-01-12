@@ -2,7 +2,10 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import { ListOutlined, AddCircleOutline, AccountCircleRounded } from '@material-ui/icons';
-function Header({ setContent }) {
+import { Outlet, Link } from "react-router-dom";
+
+
+function Header() {
     return (
 
         <AppBar color="default">
@@ -11,31 +14,33 @@ function Header({ setContent }) {
                     variant="contained"
                     color="secondary"
                     startIcon={<ListOutlined />}
-                    onClick={() => setContent?.('articles')}
+                    component={Link} to="/articles"
                 >
                     Articles
                 </Button>
+
                 <Button
                     variant="outlined"
                     color="secondary"
                     startIcon={<AddCircleOutline />}
-                    onClick={() => setContent?.('add article')}
+                    component={Link} to="/add-article"
                 >
                     Add Article
                 </Button>
+
                 <Button
                     variant="contained"
                     color="secondary"
                     endIcon={<AccountCircleRounded color="inherit"
                         fontSize="large" />}
-
-                    onClick={() => setContent?.('profile')}
+                    component={Link} to="/profile"
                 >
                     Profile
                 </Button>
 
 
             </Toolbar>
+            <Outlet />
 
         </AppBar>
 
