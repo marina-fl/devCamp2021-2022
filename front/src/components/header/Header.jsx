@@ -11,7 +11,7 @@ function Header({ setContent }) {
                     variant="contained"
                     color="secondary"
                     startIcon={<ListOutlined />}
-                    onClick={() => setContent('articles')}
+                    onClick={() => setContent?.('articles')}
                 >
                     Articles
                 </Button>
@@ -19,7 +19,7 @@ function Header({ setContent }) {
                     variant="outlined"
                     color="secondary"
                     startIcon={<AddCircleOutline />}
-                    onClick={() => setContent('add article')}
+                    onClick={() => setContent?.('add article')}
                 >
                     Add Article
                 </Button>
@@ -29,7 +29,7 @@ function Header({ setContent }) {
                     endIcon={<AccountCircleRounded color="inherit"
                         fontSize="large" />}
 
-                    onClick={() => setContent('profile')}
+                    onClick={() => setContent?.('profile')}
                 >
                     Profile
                 </Button>

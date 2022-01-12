@@ -1,4 +1,4 @@
-import './Profile.css'
+import './Body.css';
 
 function Profile(props) {
     return (

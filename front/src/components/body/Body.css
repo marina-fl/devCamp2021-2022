@@ -14,3 +14,15 @@
     width: 100px;
     height: 100px;
 }
+
+.add-post {
+    width: 500px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #cde9ec;
+    color: #0a0a0a;
+    font-size: 25px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+}

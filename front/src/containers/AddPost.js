@@ -1,9 +1,9 @@
 import AddPost from '../components/body/AddPost';
 
-function AddPostContainer(props){
+function AddPostContainer(){
    
     return (
-        <AddPost title='title' text='text'/>
+        <AddPost  text='text'/>
     );
 }
 

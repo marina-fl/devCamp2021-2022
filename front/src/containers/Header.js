@@ -1,9 +1,9 @@
 import Header from '../components/header/Header';
 
-function HeaderContainer(props){
+function HeaderContainer({setContent}){
    
     return (
-        <Header/>
+        <Header setContent={setContent}/>
     );
 }
 
