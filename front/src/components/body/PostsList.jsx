@@ -1,15 +1,34 @@
 import Post from './Post';
-import List from '@mui/material/List';
+import { Link, Outlet } from "react-router-dom";
+import { getPosts } from "../../data";
 
-function PostsList(props) {
+function PostsList() {
+    let posts = getPosts();
 
     return (
-        <List>
-            <Post message='Happy New Year' />
-            <Post message='And Merry Cristmas' />
-        </List>
+        <div style={{ display: "flow" }}>
+
+
+            {posts.map(post => (
+                <Link
+                    style={{ display: "block", margin: "1rem 0" }}
+                    to={`/articles/${post.id}`}
+                    key={post.id}
+                >
+                    <Post title={post.title} text={post.text} date={post.date} />
+
+                </Link>
+
+
+
+            ))}
+
+        </div >
+
     )
 }
+
+
 
 export default PostsList;
 

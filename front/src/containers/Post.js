@@ -1,9 +1,9 @@
 import Post from '../components/body/Post';
 
-function PostContainer(props){
+function PostContainer(){
    
     return (
-        <Post message='just one post'/>
+        <Post message='just one post' id='1' date=''/>
     );
 }
 
