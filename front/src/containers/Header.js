@@ -1,9 +1,14 @@
 import Header from '../components/header/Header';
 
-function HeaderContainer(props){
-   
+
+function HeaderContainer(){
+
     return (
+        <div>
+       
         <Header/>
+        
+        </div>
     );
 }
 

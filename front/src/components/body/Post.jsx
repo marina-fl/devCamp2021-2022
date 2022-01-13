@@ -1,6 +1,9 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-function Post(props) {
+
+
+
+function Post({ id, date, title, text }) {
 
     return (
         <Grid
@@ -13,7 +16,10 @@ function Post(props) {
                 height: 50,
                 bgcolor: 'primary.dark',
             }}>
-                <p>{props.message}</p>
+                <p>{id}</p>
+                <p>{date}</p>
+                <p>{title}</p>
+                <p>{text}</p>
             </Box >
         </Grid>
 
