@@ -1,5 +1,4 @@
 const config = require('./config');
-
 module.exports = require('knex')({
     client: 'pg',
     connection: {
@@ -8,4 +7,7 @@ module.exports = require('knex')({
         password: config.dbPassword,
         database: config.dbDatabase,
     },
-});
+}); 
+
+
+
