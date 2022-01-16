@@ -1,5 +1,5 @@
 import Post from './Post';
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getPosts } from "../../data";
 
 function PostsList() {
@@ -7,8 +7,6 @@ function PostsList() {
 
     return (
         <div style={{ display: "flow" }}>
-
-
             {posts.map(post => (
                 <Link
                     style={{ display: "block", margin: "1rem 0" }}
@@ -18,18 +16,13 @@ function PostsList() {
                     <Post title={post.title} text={post.text} date={post.date} />
 
                 </Link>
-
-
-
             ))}
-
         </div >
-
     )
 }
 
-
-
 export default PostsList;
+
+
 
 

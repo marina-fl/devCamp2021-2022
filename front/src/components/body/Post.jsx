@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import PropTypes from 'prop-types';
 
 
-
-function Post({ id, date, title, text }) {
+function Post({ date, title, text }) {
 
     return (
         <Grid
@@ -16,7 +16,6 @@ function Post({ id, date, title, text }) {
                 height: 50,
                 bgcolor: 'primary.dark',
             }}>
-                <p>{id}</p>
                 <p>{date}</p>
                 <p>{title}</p>
                 <p>{text}</p>
@@ -24,6 +23,12 @@ function Post({ id, date, title, text }) {
         </Grid>
 
     );
+}
+
+Post.propTypes = {
+    date: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    text: PropTypes.string.isRequired,
 }
 
 export default Post;

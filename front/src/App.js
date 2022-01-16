@@ -4,16 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfileContainer from './containers/Profile';
 import AddPostContainer from './containers/AddPost';
 import PostListContainer from './containers/PostsList';
-/* import PostContainer from './containers/Post'; */
-
 import { ValidatePostUrl, ValidateTitleUrl, ValidateFileUrl } from './ValidateFunctions';
-
-
-
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
     <div className="App">
+      <ErrorBoundary>
       <BrowserRouter>
       <Routes>
       <Route path="/" element={
@@ -66,13 +63,10 @@ function App() {
 
       </Routes>
       </BrowserRouter>
-    
-
-    
+      </ErrorBoundary>
     </div>
   );
 } 
-
 
 
 
