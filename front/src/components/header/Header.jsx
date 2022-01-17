@@ -32,7 +32,7 @@ function Header() {
                     variant="contained"
                     color="secondary"
                     endIcon={<AccountCircleRounded color="inherit"
-                        fontSize="large" />}
+                              fontSize="large" />}
                     component={Link} to="/profile"
                 >
                     Profile

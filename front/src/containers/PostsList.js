@@ -1,6 +1,6 @@
 import PostsList from '../components/body/PostsList';
 
-function PostListContainer(props){
+function PostListContainer(){
    
     return (
         <PostsList />

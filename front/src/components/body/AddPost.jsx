@@ -1,10 +1,10 @@
 import './Body.css';
-function AddPost({ text }) {
+
+function AddPost() {
 
     return (
         <form className="add-post">
             <input placeholder='write your message' />
-            <textarea placeholder="Share your news" value={text} />
             <button type="submit">Save</button>
         </form>
     );
