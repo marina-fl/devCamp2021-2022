@@ -5,16 +5,15 @@ function Users(props){
 	return (
 		<div>
 			{users.map(({ iduser, fname, lname }) => (
-            <div key={iduser}>
-			   <p>
-				   {fname} {lname}
-			   </p>
-				
-			  </div>  
+				<div key={iduser}>
+					<p>
+						{fname} {lname}
+					</p>
+				</div >
 			))}
-		</div>
-	);
-};
+			
+		</div> )
+}
 
 Users.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.shape({
