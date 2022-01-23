@@ -1,25 +1,38 @@
-import Post from './Post';
-import { Link } from "react-router-dom";
-import { getPosts } from "../../data";
+import moment from "moment";
+import PropTypes from 'prop-types';
 
-function PostsList() {
-    let posts = getPosts();
-
+function PostsList({posts}) {
     return (
         <div style={{ display: "flow" }}>
-            {posts.map(post => (
-                <Link
-                    style={{ display: "block", margin: "1rem 0" }}
-                    to={`/articles/${post.id}`}
-                    key={post.id}
-                >
-                    <Post title={post.title} text={post.text} date={post.date} />
+            {posts.map(({ idpost, text, created_at, iduser }) =>
+                <div key={idpost}>
+                    <p>
+                        {iduser}
+                    </p>
+                    <p>
+                        {text}
+                    </p>
+                            
+                    <p>
+                        {moment(created_at).format("DD-MM-YYYY")}
+                    </p>
+                        </div>   
 
-                </Link>
-            ))}
+                )}
         </div >
     )
 }
+
+PostsList.propTypes = {
+    posts: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        updated_at: PropTypes.string,
+        user_id: PropTypes.string.isRequired
+    })).isRequired
+}
+
 
 export default PostsList;
 
