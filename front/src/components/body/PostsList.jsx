@@ -14,7 +14,7 @@ function PostsList({posts}) {
                     </p>
                             
                     <p>
-                        {moment(created_at).format("DD-MM-YYYY")}
+                        {moment(created_at).format('MMMM Do YYYY, h:mm:ss ')}
                     </p>
                         </div>   
 
