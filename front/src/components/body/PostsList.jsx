@@ -28,8 +28,7 @@ PostsList.propTypes = {
         id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string,
-        user_id: PropTypes.string.isRequired
+        iduser: PropTypes.string.isRequired
     })).isRequired
 }
 
