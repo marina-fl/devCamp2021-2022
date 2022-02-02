@@ -3,8 +3,8 @@ import HeaderContainer from './containers/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfileContainer from './containers/Profile';
 import AddPostContainer from './containers/AddPost';
-import PostListContainer from './containers/PostsList';
-import { ValidatePostUrl, ValidateTitleUrl, ValidateFileUrl } from './ValidateFunctions';
+import PostListContainer from './containers/posts/PostsList';
+import UsersContainer from './containers/users/Users';
 import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
     </div>
       
     }/>
-    <Route path="/articles" element={
+    <Route path="/posts" element={
      <div> 
     <HeaderContainer/>
     <PostListContainer/>
@@ -42,8 +42,10 @@ function App() {
     </div>  
     }/>  
     
-
-    <Route path="/articles/:id" element={<ValidatePostUrl/>} />
+    <Route path='/users' 	element={
+						<UsersContainer />
+		        }
+    />        
 
 <Route
       path="*"
@@ -55,11 +57,6 @@ function App() {
     
       }
     />
-
-<Route path="/titles/:title" element={<ValidateTitleUrl/>} />
-
-<Route path="/files/:file" element={<ValidateFileUrl/>} />
-
 
       </Routes>
       </BrowserRouter>

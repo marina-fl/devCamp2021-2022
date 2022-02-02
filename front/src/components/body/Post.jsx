@@ -2,9 +2,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
 
-
-function Post({ date, title, text }) {
-
+function Post({ created_at, text, iduser }) {
     return (
         <Grid
             container spacing={0}
@@ -16,9 +14,9 @@ function Post({ date, title, text }) {
                 height: 50,
                 bgcolor: 'primary.dark',
             }}>
-                <p>{date}</p>
-                <p>{title}</p>
+                <p>{iduser}</p>
                 <p>{text}</p>
+                <p>{created_at}</p>
             </Box >
         </Grid>
 
@@ -26,9 +24,9 @@ function Post({ date, title, text }) {
 }
 
 Post.propTypes = {
-    date: PropTypes.string.isRequired,
-    title: PropTypes.string,
+    created_at: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    iduser: PropTypes.number.isRequired
 }
 
 export default Post;
