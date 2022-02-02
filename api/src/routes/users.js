@@ -23,8 +23,10 @@ router.get('/:id/avatar', async (req, res) => {
       .join('avatars', 'users.idusers', 'avatars.idusers')
       .where({ "users.idusers": id });
 
+    console.log(path.join(__filename), userAvatar);
+
     if (userAvatar !== null) {
-      res.sendFile(path.join(__dirname, '/', __filename));
+      res.sendFile(path.join(__filename));
     } else {
       res.status(404).send({ error: 'no avatar' });
     }
