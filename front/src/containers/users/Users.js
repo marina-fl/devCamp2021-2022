@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import Users from '../../components/body/Users';
 import getUsers from './api/crud';
@@ -9,7 +10,7 @@ function UsersContainer() {
 
 	return (
 		<div>
-			{isFetching && <div>Loading...</div>}
+			{isFetching && <CircularProgress color="secondary"/>}
 			<Users users={users} />
 		</div>
 	);
