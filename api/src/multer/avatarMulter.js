@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
 });
 
 const types = ["image/png", "image/jpeg", "image/jpg"];
-
 const fileFilter = (req, file, cb) => {
   if (types.includes(file.mimetype)) {
     cb(null, true);
@@ -19,5 +18,4 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
-
 module.exports = multer({ storage, fileFilter });
