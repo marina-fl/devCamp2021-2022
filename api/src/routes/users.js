@@ -3,19 +3,21 @@ const express = require("express");
 const router = new express.Router();
 const path = require('path');
 const db = require("../services/db");
+// eslint-disable-next-line import/extensions
+const asyncErrorHandler = require("../middleware/asyncErrorHandler");
 
-router.get("/", async (req, res) => {
+router.get("/", asyncErrorHandler(async (req, res) => {
   const usersList = await db.select().from("users").orderBy("idusers");
   res.status(200).json(usersList);
-});
+}));
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", asyncErrorHandler(async (req, res) => {
   const { id } = req.params;
   const getUser = await db.select().from("users").where("idusers", id);
   res.status(200).json(getUser);
-});
+}));
 
-router.get('/:id/avatar', async (req, res) => {
+router.get('/:id/avatar', asyncErrorHandler(async (req, res) => {
   const { id } = req.params;
   
   if (+id) {
@@ -33,24 +35,24 @@ router.get('/:id/avatar', async (req, res) => {
   } else {
     res.status(400).send({ error: `No user with id ${id}` });
   }
-});
+}));
 
-router.post("/", async (req, res) => {
+router.post("/", asyncErrorHandler(async (req, res) => {
   await db.insert(req.body).into("users");
   res.status(200).json("Succesfully added to db");
-});
+}));
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", asyncErrorHandler(async (req, res) =>{
   const { id } = req.params;
   await db("users").where("idusers", id).update(req.body);
   return res.status(200).json("User is succesfully updated");
-});
+}));
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", asyncErrorHandler(async (req, res) => {
   const { id } = req.params;
   await db("users").where("idusers", id).del();
   res.status(200).json("User was deleted from db");
-});
+}));
 
 module.exports = router;
 
