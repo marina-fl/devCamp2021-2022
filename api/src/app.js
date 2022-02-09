@@ -5,18 +5,28 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const config = require('./services/config');
+const db = require('./services/db');
 
 const port = config.appPort; 
-const host = process.env.APP_HOST; 
+const host = config.appHost; 
 
 const usersRoutes = require('./routes/users');
 const postsRoutes = require('./routes/posts');
 const likesRoutes = require('./routes/likes');
 const commentsRoutes = require('./routes/comments');
 const avatarsRoutes = require('./routes/avatars');
+// eslint-disable-next-line import/extensions
+const logsMiddleware = require('./middleware/logsMiddleware');
+
+
+app.use(logsMiddleware({
+  db,
+  dbTable: config.logsTable,
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 app.use('/users', usersRoutes);
 app.use('/posts', postsRoutes);
