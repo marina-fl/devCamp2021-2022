@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const config = require('./services/config');
 
 const port = config.appPort; 
@@ -17,6 +19,7 @@ const avatarsRoutes = require('./routes/avatars');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/users', usersRoutes);
 app.use('/posts', postsRoutes);
