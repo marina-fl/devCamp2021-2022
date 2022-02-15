@@ -5,6 +5,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import addPost from "../../containers/addPost/api/crud";
 import Button from "@mui/material/Button";
+import FormikAutocomplete from "../FormikAutocomplete";
 
 const AddPost = ({ postData }) => {
   const postSchema = Yup.object().shape({
@@ -28,6 +29,12 @@ const AddPost = ({ postData }) => {
       text_: newPost.text_,
     });
   };
+
+  const options = [
+    { value: "all", label: "all" },
+    { value: "friends", label: "friends" },
+    { value: "only me", label: "only me" },
+  ];
 
   return (
     <div className="add_form">
@@ -65,9 +72,16 @@ const AddPost = ({ postData }) => {
                   </div>
                 )}
               </Field>
+              <Field
+                component={FormikAutocomplete}
+                name="available_to"
+                label="available to"
+                options={options}
+                value={options.value}
+              />
             </div>
 
-            <div role="group" aria-labelledby="radio-group">
+            {/*  <div role="group" aria-labelledby="radio-group">
               <label>
                 <Field type="radio" name="available_to" value="all" />
                 All
@@ -80,7 +94,7 @@ const AddPost = ({ postData }) => {
                 <Field type="radio" name="available_to" value="only me" />
                 Only me
               </label>
-            </div>
+            </div> */}
 
             <Button type="submit" variant="contained">
               Submit
