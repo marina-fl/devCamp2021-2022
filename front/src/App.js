@@ -1,7 +1,7 @@
 import './App.css';
 import HeaderContainer from './containers/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProfileContainer from './containers/Profile';
+import ProfileContainer from './containers/profile/Profile';
 import AddPostContainer from './containers/addPost/AddPost';
 import PostListContainer from './containers/posts/PostsList';
 import UsersContainer from './containers/users/Users';
