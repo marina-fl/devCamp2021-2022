@@ -9,5 +9,3 @@ module.exports = require('knex')({
     },
 }); 
 
-
-
