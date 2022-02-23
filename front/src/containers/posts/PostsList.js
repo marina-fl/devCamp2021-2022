@@ -3,7 +3,7 @@ import getPosts from './api/crud';
 import { useQuery } from 'react-query';
 
 function PostListContainer() {
-        const { isFetching, data } = useQuery('posts', () => getPosts());
+        const { isFetching, data } = useQuery('articles', () => getPosts());
         const posts = data?.data || [];
        return (
          

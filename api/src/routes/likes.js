@@ -1,7 +1,8 @@
 const express = require("express");
+
 const router = new express.Router();
 const db = require("../services/db");
-const currentDatetime = new Date().toLocaleString();
+
 router.get("/", async (req, res) => {
 const allLikes = await db.select().from("post_likes");
 return res.status(200).json(allLikes);
