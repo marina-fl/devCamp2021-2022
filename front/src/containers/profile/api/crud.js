@@ -1,10 +1,18 @@
 import { apiClient } from '../../../config/axios';
 
-const createProfile = async ({ data }) => {
-	return apiClient.post('/users/:iduser', data, {
+export const createProfile = async ({ data }) => {
+	return apiClient.post('/users', data, {
 		headers: {'Content-Type': 'multipart/form-data'}
 	});
 };
+export const editProfile = async (iduser, data) => {
+	return apiClient.put(`/users/${iduser}`, data);
+};
 
+export const getUsers = async () => {
+	return apiClient.get('/users');
+};
 
-export default createProfile
+export const getProfile = async (id) => {
+	return apiClient.get(`/users/${id}`);
+};

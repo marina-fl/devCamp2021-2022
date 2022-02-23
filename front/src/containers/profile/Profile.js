@@ -1,18 +1,24 @@
-import CreateProfile from '../../components/body/CreateProfile';
-import createProfile from "./api/crud";
-import { useQuery } from "react-query";
+import React from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router';
 
-function ProfileContainer() {
-  const { isFetching, data } = useQuery("profile", () => createProfile());
-  const profileData = data?.data 
-  
-  return (
-    <div>
-      {isFetching && <div>Loading...</div>}
-      <CreateProfile profileData={profileData} />
-    </div>
-  );
-}
+import UserProfile from '../../components/body/UserProfile';
+import { getProfile } from './api/crud';
 
-export default ProfileContainer;
+const UserProfileContainer = () => {
+	const { id } = useParams();
+	const { isFetching, data } = useQuery(`users/${id}`, () =>
+		getProfile(id)
+	);
 
+	const profile = data?.data || [];
+
+	return (
+		<div>
+			{isFetching && <div>Loading..</div>}
+			<UserProfile profile={profile} />
+		</div>
+	);
+};
+
+export default UserProfileContainer;
