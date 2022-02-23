@@ -1,11 +1,14 @@
 import "./Body.css";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import * as Yup from "yup";
 import { useMutation } from "react-query";
-import { TextField } from "formik-mui";
+import { Formik, Field, Form } from "formik";
 import { Button, Box } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import AvailableTo from "./AvailableTo";
+import createProfile from "../../containers/profile/api/crud";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 const CreateProfile = ({ profileData }) => {
   const profileSchema = Yup.object().shape({
@@ -32,12 +35,12 @@ const CreateProfile = ({ profileData }) => {
       about: newProfile.about,
       email: newProfile.email,
       phone: newProfile.phone,
-      avatar: croppedImage,
+      avatar: croppedAvatar,
     });
   };
 
-  const [image, setImage] = useState();
-  const [croppedImage, setCroppedImage] = useState();
+  const [avatar, setAvatar] = useState();
+  const [croppedAvatar, setCroppedAvatar] = useState();
   const [cropper, setCropper] = useState();
 
   const handleChange = (e) => {
@@ -47,7 +50,7 @@ const CreateProfile = ({ profileData }) => {
     if (file.type.match("image.*") && file.size < 10000000) {
       const reader = new FileReader();
       reader.onload = () => {
-        setImage(reader.result);
+        setAvatar(reader.result);
       };
       reader.readAsDataURL(file);
     } else {
@@ -55,16 +58,16 @@ const CreateProfile = ({ profileData }) => {
     }
   };
 
-  const cropImage = () => {
+  const cropAvatar = () => {
     if (typeof cropper !== "undefined") {
-      setCroppedImage(cropper.getCroppedCanvas().toDataURL());
-      setImage(null);
+      setCroppedAvatar(cropper.getCroppedCanvas().toDataURL());
+      setAvatar(null);
     }
   };
 
   const deleteImage = () => {
-    setCroppedImage(null);
-    setImage(null);
+    setCroppedAvatar(null);
+    setAvatar(null);
   };
 
   return (
@@ -79,31 +82,31 @@ const CreateProfile = ({ profileData }) => {
             <div>Errors: {JSON.stringify(errors)}</div>
             <div>
               <Box margin={5}>
-                {!image && (
+                {!avatar && (
                   <Button variant="contained" component="label">
                     Choose image
                     <input type="file" hidden onChange={handleChange} />
                   </Button>
                 )}
-                {image && (
+                {avatar && (
                   <Button variant="contained" onClick={deleteImage}>
                     Delete image
                   </Button>
                 )}
-                {image && (
+                {avatar && (
                   <Cropper
-                    src={image}
+                    src={avatar}
                     onInitialized={(instance) => setCropper(instance)}
                     rotatable={false}
                     viewMode={1}
                   />
                 )}
-                {image && (
-                  <Button variant="contained" onClick={cropImage}>
+                {avatar && (
+                  <Button variant="contained" onClick={cropAvatar}>
                     Save
                   </Button>
                 )}
-                <img src={postData.imgSrc} alt="some source" />
+                <img src={profileData.imgSrc} alt="some source" />
               </Box>
               <label htmlFor="text">User id:</label>
               <Field id="idusers" name="idusers" placeholder="User id">
@@ -192,12 +195,12 @@ const CreateProfile = ({ profileData }) => {
   );
 };
 
-Profile.propTypes = {
+/* CreateProfile.propTypes = {
   avatar: PropTypes.string,
   user_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string,
   about: PropTypes.string,
-};
+}; */
 
 export default CreateProfile;
