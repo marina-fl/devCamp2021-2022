@@ -6,4 +6,5 @@ const addPost = async ({ data }) => {
 	});
 };
 
+
 export default addPost
