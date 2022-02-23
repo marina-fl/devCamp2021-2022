@@ -1,8 +1,6 @@
 import FormikAutocomplete from "../FormikAutocomplete";
 import "./Body.css";
-import PropTypes from "prop-types";
-import { TextField } from "formik-mui";
-import TextField from "@mui/material/TextField";
+import { Field } from "formik";
 
 const options = [
   { value: "all", label: "all" },
@@ -10,7 +8,7 @@ const options = [
   { value: "only me", label: "only me" },
 ];
 
-function AvailableTo({ options }) {
+function AvailableTo() {
   return (
     <Field
       component={FormikAutocomplete}
