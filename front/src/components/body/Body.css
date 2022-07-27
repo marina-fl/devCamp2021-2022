@@ -1,7 +1,7 @@
 .profile_block {
     width: 500px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 100px;
     background-color: #cde9ec;
     color: #0a0a0a;
     font-size: 25px;
@@ -16,13 +16,13 @@
 }
 
 .add-post {
-    width: 500px;
+    width: 50%;
     border-radius: 20px;
-    padding: 20px;
+    padding: 200px;
     background-color: #cde9ec;
     color: #0a0a0a;
-    font-size: 25px;
+    font-size: 15px;
     position: relative;
-    top: 30px;
+    top: 100px;
     left: 30px;
 }
