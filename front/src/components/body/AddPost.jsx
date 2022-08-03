@@ -1,4 +1,5 @@
 import "./Body.css";
+
 import { useMutation } from "react-query";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -15,13 +16,6 @@ const AddPost = ({ postData }) => {
     available_to: Yup.string()
       .oneOf(["all", "friends", "оnly me"])
       .required("choose option"),
-    idusers: Yup.number().required(
-      "write iduser until I understand what to do with this"
-    ),
-  });
-
-  const mutation = useMutation((newPost) => addPost(newPost));
-
   const onFormSubmit = (newPost) => {
     mutation.mutate({
       idusers: newPost.idusers,
@@ -108,5 +102,6 @@ AddPost.propTypes = {
     })
   ),
 };
+=======
 
 export default AddPost;

@@ -1,19 +1,19 @@
 import React from "react";
-import { userDataType } from "./UserType";
+import { userDataType } from "./UserDataType";
 
-function User({ userData }) {
+function User({ id, name }) {
   return (
     <div>
       <ul>
-        <li>{userData.id}</li>
-        <li>{userData.age}</li>
-        <li>{userData.avatar.file.name}</li>
-        <li>{userData.posts[0].title}</li>
-        <li>{userData.posts[0].createdAt}</li>
-      </ul>
+        <li>{id}</li>
+        <li>{name}</li>
+            </ul>
     </div>
   );
 }
+
+
+
 
 User.propTypes = {
   userData: userDataType,
