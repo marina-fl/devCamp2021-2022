@@ -1,4 +1,5 @@
 import "./App.css";
+
 import HeaderContainer from "./containers/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserProfileContainer from "./containers/profile/Profile";
@@ -8,6 +9,9 @@ import UsersContainer from "./containers/users/Users";
 import ErrorBoundary from "./components/ErrorBoundary";
 import authContext from "./authContext";
 import { useState } from "react";
+import AuthContainer from "./containers/auth";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import GuestRoute from "./components/auth/GuestRoute";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -24,58 +28,60 @@ function App() {
         <authContext.Provider value={userData}>
           <BrowserRouter>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <div>
-                    <HeaderContainer />
-                    <PostListContainer />
-                  </div>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <div>
-                    <HeaderContainer />
-                    <UserProfileContainer />
-                  </div>
-                }
-              />
-              <Route
-                path="/home"
-                element={
-                  <div>
-                    <button onClick={inc}>Click me UP!</button>
-                  </div>
-                }
-              />
-
-              <Route
-                path="/add-article"
-                element={
-                  <div>
-                    <HeaderContainer />
-                    <AddPostContainer />
-                  </div>
-                }
-              />
-              <Route
-                path="/articles"
-                element={
-                  <div>
-                    <HeaderContainer />
-                    <PostListContainer />
-                  </div>
-                }
-              />
-
-              <Route path="/users" element={<UsersContainer />} />
-
+              <Route element={<ProtectedRoute />}>
+                <Route
+                  path="/"
+                  element={
+                    <div>
+                      <HeaderContainer />
+                      <PostListContainer />
+                    </div>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <div>
+                      <HeaderContainer />
+                      <UserProfileContainer />
+                    </div>
+                  }
+                />
+                <Route
+                  path="/home"
+                  element={
+                    <div>
+                      <button onClick={inc}>Click me UP!</button>
+                    </div>
+                  }
+                />
+                <Route
+                  path="/add-article"
+                  element={
+                    <div>
+                      <HeaderContainer />
+                      <AddPostContainer />
+                    </div>
+                  }
+                />
+                <Route
+                  path="/articles"
+                  element={
+                    <div>
+                      <HeaderContainer />
+                      <PostListContainer />
+                    </div>
+                  }
+                />
+                <Route path="/users" element={<UsersContainer />} />
+              </Route>
+              <Route element={<GuestRoute />}>
+                <Route path="/login" element={<AuthContainer />} />
+              </Route>
               <Route
                 path="*"
                 element={
-                  <main style={{ padding: "1rem" }}>
+                  <main>
                     <p>URL is incorrect (no matches)</p>
                   </main>
                 }
