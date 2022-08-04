@@ -1,1 +1,5 @@
 node_modules
+/src/routes/users.js
+/src/google/auth.js
+/src/middleware/validateMiddleware.js
+

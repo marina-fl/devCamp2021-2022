@@ -18,3 +18,25 @@ module.exports = {
     "no-plusplus": "off",
   },
 };
+
+const {
+  extractConfig,
+  disablePlugins,
+} = require('eslint-disable');
+
+const baseConfig = {
+  'extends': [
+    'canonical'
+  ],
+  'root': true,
+};
+
+// This will disable "import" plugin and all rules matching "import/*" pattern.
+module.exports = disablePlugins(
+  extractConfig(
+    baseConfig,
+  ),
+  [
+    'import',
+  ]
+);
