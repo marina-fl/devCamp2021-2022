@@ -7,5 +7,9 @@ module.exports = {
     dbPassword: process.env.DB_PASSWORD,
     dbDatabase: process.env.DB_DATABASE,
     logsTable: process.env.LOGS_TABLE,
+    googleID: process.env.GOOGLE_CLIENT_ID,
+    googleSecret: process.env.GOOGLE_CLIENT_SECRET,
+    secret: process.env.SECRET
+
 };
 
