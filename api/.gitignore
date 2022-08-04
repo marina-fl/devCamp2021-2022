@@ -12,3 +12,6 @@
 # misc
 .env
 ./images
+.eslintrc.js
+.package.json 
+.eslintignore

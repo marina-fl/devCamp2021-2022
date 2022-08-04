@@ -5,6 +5,7 @@ const path = require('path');
 const db = require("../services/db");
 // eslint-disable-next-line import/extensions
 const asyncErrorHandler = require("../middleware/asyncErrorHandler");
+const validateMiddleware = require('../middleware/validateMiddleware');
 
 router.get("/", asyncErrorHandler(async (req, res) => {
   const usersList = await db.select().from("users").orderBy("idusers");
@@ -19,7 +20,7 @@ router.get("/:id", asyncErrorHandler(async (req, res) => {
 
 router.get('/:id/avatar', asyncErrorHandler(async (req, res) => {
   const { id } = req.params;
-  
+
   if (+id) {
     const userAvatar = await db('users')
       .join('avatars', 'users.idusers', 'avatars.idusers')
@@ -37,16 +38,85 @@ router.get('/:id/avatar', asyncErrorHandler(async (req, res) => {
   }
 }));
 
-router.post("/", asyncErrorHandler(async (req, res) => {
-  await db.insert(req.body).into("users");
-  res.status(200).json("Succesfully added to db");
-}));
+router.post("/",
+  validateMiddleware({
+    user_name: {
+      required: true,
+      min: 2,
+      max: 24,
+    },
+    email: {
+      required: true,
+      email: true,
+    },
+    phone: {
+      required: false,
+    },
+  },
+    {
+      user_name: {
+        tableName: 'users',
+        fieldName: 'user_name',
+        id: 'idusers',
+      },
 
-router.put("/:id", asyncErrorHandler(async (req, res) =>{
-  const { id } = req.params;
-  await db("users").where("idusers", id).update(req.body);
-  return res.status(200).json("User is succesfully updated");
-}));
+      email: {
+        tableName: 'users',
+        fieldName: 'email',
+        id: 'idusers',
+      },
+      phone: {
+        tableName: 'users',
+        fieldName: 'phone',
+        id: 'idusers',
+      },
+    }),
+
+  asyncErrorHandler(async (req, res) => {
+    await db.insert(req.body).into("users");
+    res.status(200).json("Succesfully added to db");
+  }));
+
+router.put("/:id",
+  validateMiddleware({
+    user_name: {
+      required: true,
+      min: 2,
+      max: 24,
+    },
+    email: {
+      required: true,
+      email: true,
+    },
+    phone: {
+      required: false,
+    },
+  },
+    {
+      user_name: {
+        tableName: 'users',
+        fieldName: 'user_name',
+        id: 'idusers',
+      },
+
+      email: {
+        tableName: 'users',
+        fieldName: 'email',
+        id: 'idusers',
+      },
+      phone: {
+        tableName: 'users',
+        fieldName: 'phone',
+        id: 'idusers',
+      },
+    }),
+  asyncErrorHandler(async (req, res) => {
+    const { id } = req.params;
+    await db("users").where("idusers", id).update(req.body);
+    return res.status(200).json("User is succesfully updated");
+  }));
+
+
 
 router.delete("/:id", asyncErrorHandler(async (req, res) => {
   const { id } = req.params;
